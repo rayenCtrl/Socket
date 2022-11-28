@@ -6,15 +6,20 @@ public class Client {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Demande de connexion");
-        Socket socket = new Socket("127.0.0.1", PORT);
+
+        Socket socket = new Socket("127.0.0.1", PORT); 
         System.out.println("Connexion etablie");
 
-        BufferedReader entreeClient=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        BufferedReader entreeClient=new BufferedReader(new InputStreamReader(socket.getInputStream())); //
         PrintWriter sortieClient=new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),true);
         
-        String str = "Bonjour";
+        String str = "Bonjour"; 
         
         sortieClient.println(str);
+
+        String strc=entreeClient.readLine();
+        System.out.println("le message recu est "+ strc);
+
         entreeClient.close();
         sortieClient.close();
         socket.close();

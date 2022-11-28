@@ -10,12 +10,15 @@ public class Serveur {
     Socket socClient = s.accept(); // L'acceptation d'une connexion d'un client
     System.out.println("Connexion etablie");
     
-    BufferedReader entreeServeur=new BufferedReader(new InputStreamReader(socClient.getInputStream()));
-    PrintWriter sortieServeur=new PrintWriter(new BufferedWriter
-                                        (new OutputStreamWriter(socClient.getOutputStream())),
-                                        true);
+    BufferedReader entreeServeur=new BufferedReader(new InputStreamReader(
+                                                socClient.getInputStream()));
+    PrintWriter sortieServeur=new PrintWriter(new BufferedWriter(
+                                          new OutputStreamWriter(socClient.getOutputStream())),true);
     String str = entreeServeur.readLine(); // lecture du message envoyé par le client
     String strMajscule = str.toUpperCase();
+
+    String strc="welcome to java";
+    sortieServeur.println(strc); // envoi du message au client
 
     s.close();
     System.out.println("le message en maj est "+ strMajscule);
